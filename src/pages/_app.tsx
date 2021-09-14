@@ -24,7 +24,7 @@ Application.getInitialProps = async (appContext: AppContext) => {
 
     const token = ctx.req?.headers.cookie?.replace('auth=', '');
 
-    const response = fetch('http://localhost:5567/auth/me', {
+    const response = fetch('http://165.22.88.161:5567/auth/me', {
         headers: token ? {'Authorization': `Bearer ${token}`} : undefined,
     });
 

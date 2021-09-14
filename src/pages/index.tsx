@@ -12,7 +12,7 @@ const Home = (props: Props) => {
         <div className="masonry">
             {products.map(product => (
                 <a className="item" key={product._id} href={`/product/detail/${product._id}`}>
-                    <img src={`http://localhost:5567/${product.mainImageUrl}`}
+                    <img src={`http://165.22.88.161:5567/${product.mainImageUrl}`}
                          style={{height: '100%', objectFit: 'contain'}}
                          className="img-fluid"
                          alt={product.name}/>
@@ -23,7 +23,7 @@ const Home = (props: Props) => {
 };
 
 Home.getInitialProps = async (ctx: NextPageContext) => {
-    const res = await fetch('http://localhost:5567/product').then(res => res.json());
+    const res = await fetch('http://165.22.88.161:5567/product').then(res => res.json());
 
     return {products: res.data};
 };

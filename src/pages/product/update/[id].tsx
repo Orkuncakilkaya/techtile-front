@@ -13,14 +13,14 @@ interface Props {
 }
 
 const fetchCategories = async () => {
-    return await fetch('http://localhost:5567/category').then(async (res) => ({
+    return await fetch('http://165.22.88.161:5567/category').then(async (res) => ({
         status: res.status,
         body: await res.json(),
     }));
 };
 
 const fetchProduct = async (productId: string) => {
-    return await fetch(`http://localhost:5567/product/${productId}`).then(async (res) => ({
+    return await fetch(`http://165.22.88.161:5567/product/${productId}`).then(async (res) => ({
         status: res.status,
         body: await res.json(),
     }));
@@ -60,7 +60,7 @@ const ProductUpdatePage = (props: Props) => {
     const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const response = fetch(`http://localhost:5567/product/${product._id}`, {
+        const response = fetch(`http://165.22.88.161:5567/product/${product._id}`, {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${token}`,

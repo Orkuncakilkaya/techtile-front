@@ -10,7 +10,7 @@ interface Props {
 }
 
 const fetchCategories = async () => {
-    return await fetch('http://localhost:5567/category').then(async (res) => ({
+    return await fetch('http://165.22.88.161:5567/category').then(async (res) => ({
         status: res.status,
         body: await res.json(),
     }));
@@ -27,7 +27,7 @@ const CategoryList = (props: Props) => {
     };
 
     const deleteCategory = async (id: string) => {
-        const {status} = await fetch(`http://localhost:5567/category/${id}`, {
+        const {status} = await fetch(`http://165.22.88.161:5567/category/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },

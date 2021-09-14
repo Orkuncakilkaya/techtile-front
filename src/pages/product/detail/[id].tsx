@@ -16,7 +16,7 @@ interface Props {
 }
 
 const fetchProduct = async (productId: string) => {
-    return await fetch(`http://localhost:5567/product/${productId}`).then(async (res) => ({
+    return await fetch(`http://165.22.88.161:5567/product/${productId}`).then(async (res) => ({
         status: res.status,
         body: await res.json(),
     }));
@@ -30,14 +30,14 @@ const ProductDetailPage = (props: Props) => {
     const images = useMemo(() => {
         return [
             {
-                original: `http://localhost:5567/${product.mainImageUrl}`,
+                original: `http://165.22.88.161:5567/${product.mainImageUrl}`,
             },
-            ...product.extraImages.map(image => ({original: `http://localhost:5567/${image}`})),
+            ...product.extraImages.map(image => ({original: `http://165.22.88.161:5567/${image}`})),
         ];
     }, [product]);
 
     const deleteProduct = async (id: string) => {
-        const {status} = await fetch(`http://localhost:5567/product/${id}`, {
+        const {status} = await fetch(`http://165.22.88.161:5567/product/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },

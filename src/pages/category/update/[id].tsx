@@ -19,7 +19,7 @@ const CategoryUpdatePage = (props: Props) => {
 
     const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = fetch(`http://localhost:5567/category/${category?._id}`, {
+        const response = fetch(`http://165.22.88.161:5567/category/${category?._id}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -77,7 +77,7 @@ const CategoryUpdatePage = (props: Props) => {
 CategoryUpdatePage.getInitialProps = async (ctx: NextPageContext) => {
     const categoryId = ctx.query.id;
 
-    const {body, status} = await fetch(`http://localhost:5567/category/${categoryId}`).then(async (res) => ({
+    const {body, status} = await fetch(`http://165.22.88.161:5567/category/${categoryId}`).then(async (res) => ({
         status: res.status,
         body: await res.json(),
     }));

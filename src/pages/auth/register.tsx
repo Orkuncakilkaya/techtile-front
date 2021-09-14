@@ -14,7 +14,7 @@ const AuthRegisterPage = () => {
 
     const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = fetch('http://localhost:5567/auth/register', {
+        const response = fetch('http://165.22.88.161:5567/auth/register', {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',

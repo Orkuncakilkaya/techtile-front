@@ -10,7 +10,7 @@ interface Props {
 }
 
 const fetchCategories = async () => {
-    return await fetch('http://localhost:5567/category').then(async (res) => ({
+    return await fetch('http://165.22.88.161:5567/category').then(async (res) => ({
         status: res.status,
         body: await res.json(),
     }));
@@ -50,7 +50,7 @@ const ProductCreatePage = (props: Props) => {
     const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const response = fetch('http://localhost:5567/product', {
+        const response = fetch('http://165.22.88.161:5567/product', {
             headers: {
                 'Accept': 'application/json',
                 'Authorization': `Bearer ${token}`,
