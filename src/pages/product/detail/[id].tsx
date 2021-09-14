@@ -2,7 +2,7 @@ import React, {useContext, useMemo} from 'react';
 import withReactContent from 'sweetalert2-react-content';
 import Swal from 'sweetalert2';
 import UserContext from '../../../context/user.context';
-import {Button, Card, Col, Form, Row} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import {NextPageContext} from 'next';
 import {ProductModel} from '../../../models/product/product.model';
 import ImageGallery from 'react-image-gallery';
@@ -10,9 +10,11 @@ import {UserModel} from '../../../models/user/user.model';
 import {CategoryModel} from '../../../models/category/category.model';
 
 interface Props {
-    product: ProductModel;
-    user: UserModel;
-    categories: CategoryModel[];
+    data: {
+        product: ProductModel;
+        user: UserModel;
+        categories: CategoryModel[];
+    }
 }
 
 const fetchProduct = async (productId: string) => {
@@ -23,9 +25,10 @@ const fetchProduct = async (productId: string) => {
 };
 
 const ProductDetailPage = (props: Props) => {
-    const {product, user, categories} = props;
+    const {product, user, categories} = props.data;
     const Alert = withReactContent(Swal);
     const {token} = useContext(UserContext);
+    console.log({props});
 
     const images = useMemo(() => {
         return [
@@ -105,9 +108,9 @@ const ProductDetailPage = (props: Props) => {
 };
 
 ProductDetailPage.getInitialProps = async (ctx: NextPageContext) => {
-    const {body: productBody} = await fetchProduct(ctx.query.id as string);
+    const {body} = await fetchProduct(ctx.query.id as string);
 
-    return {product: productBody.data.product, categories: productBody.data.categories, user: productBody.data.user};
+    return {data: {product: body.data.product, categories: body.data.categories, user: body.data.user}};
 };
 
 export default ProductDetailPage;
