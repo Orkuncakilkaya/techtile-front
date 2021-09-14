@@ -1,0 +1,20 @@
+.masonry {
+  display: flex;
+  flex-wrap: wrap;
+
+  .item {
+    height: 150px;
+    line-height: 150px;
+    color: white;
+    margin: 0 1rem 1rem 0;
+    text-align: center;
+    flex: 1 0 auto;
+  }
+
+  @for $i from 1 through 36 {
+    .item:nth-child(#{$i}) {
+      $h: (random(280) + 20) + px;
+      width: $h;
+    }
+  }
+}
